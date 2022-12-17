@@ -76,4 +76,4 @@ id_dict = {'full':ids, 'train':train_id, 'test':test_id, 'val':val_id}
 data_dict = {'train images':train_imgs,'train Mmyo':train_Mmyo, 'test images':test_imgs, 'test Mmyo':test_Mmyo, 'validation images':val_imgs, 'validation Mmyo':val_Mmyo, 'id':id_dict}
 
 with open(f'{dataset}_imgs_and_Mmyo_0_15_validation.p', 'wb') as data_file:
-    p.dum
+    p.dump(data_dict, data_file, protocol=p.HIGHEST_PROTOCOL)
