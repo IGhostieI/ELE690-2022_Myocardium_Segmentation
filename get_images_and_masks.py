@@ -2,7 +2,7 @@ import sys
 sys.path.append('/home/stud/casperc/bhome/wmri')
 import numpy as np
 from organizeimage_TE import *
-from funcs_casper.Preprocessing_funs import crop_heart
+from CropHeart import crop_heart
 import pickle as p 
 import orgim_scr as oi
 import matplotlib.pyplot as plt 
