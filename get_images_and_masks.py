@@ -1,7 +1,4 @@
-import sys
-sys.path.append('/home/stud/casperc/bhome/wmri')
 import numpy as np
-from organizeimage_TE import *
 from CropHeart import crop_heart
 import pickle as p 
 import orgim_scr as oi
@@ -11,8 +8,12 @@ import pydicom as dicom
 import time
 from sklearn.model_selection import train_test_split
 
-def nest_flatten(n_list):
-    return [element for sublist in n_list for element in sublist]
+def nest_flatten(nested_list: list[list]) -> list:
+    """ 
+    nested list: a list of lists [[x],[y], ..., [a]]
+    returns a flattened list [x, y, ..., a]
+    """
+    return [element for sublist in nested_list for element in sublist]
 
 dataset = 'haglag'
 delineation_location = {'haglag':'konsensus_leik_stein', 'vxvy':'erlend'}
@@ -61,8 +62,8 @@ Mmyo = np.asarray(Mmyo)
 train_imgs, test_imgs, train_Mmyo, test_Mmyo, train_id, test_id = train_test_split(imgs, Mmyo, ids, test_size=0.25, train_size=0.75,random_state=1)
 train_imgs, val_imgs, train_Mmyo, val_Mmyo, train_id, val_id = train_test_split(train_imgs, train_Mmyo, train_id, test_size=0.2, train_size=0.80, random_state=1)
 
-train_imgs = np.asarray(nest_flatten(train_imgs))
 
+train_imgs = np.asarray(nest_flatten(train_imgs))
 train_Mmyo = np.asarray(nest_flatten(train_Mmyo))
 
 test_imgs = np.asarray(nest_flatten(test_imgs))
@@ -75,4 +76,4 @@ id_dict = {'full':ids, 'train':train_id, 'test':test_id, 'val':val_id}
 data_dict = {'train images':train_imgs,'train Mmyo':train_Mmyo, 'test images':test_imgs, 'test Mmyo':test_Mmyo, 'validation images':val_imgs, 'validation Mmyo':val_Mmyo, 'id':id_dict}
 
 with open(f'{dataset}_imgs_and_Mmyo_0_15_validation.p', 'wb') as data_file:
-    p.dump(data_dict, data_file, protocol=p.HIGHEST_PROTOCOL)
+    p.dum
