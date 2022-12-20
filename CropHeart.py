@@ -4,8 +4,8 @@ import numpy as np
 def crop_heart(inD, crop_method=1, cco=128, plot=1):
     """
     ----------------
-
-
+    Translated to Python by Casper Cappelen 
+    November 2022
 ---------------- written by: Kjerst Engan
 
 last changes:  March 2016 , incase no deliniation, check
@@ -14,8 +14,6 @@ last changes:  March 2016 , incase no deliniation, check
 ----------------------------------------------------
 plot =1    %  if plot ==1, some results are plotted for illustration
  if no wish to plot, set to 0.
-
-
   
 ---  We wish removing some areas around the edge of the image to
   focus on the heart.  this is calledcropping   The parameter is set here.
