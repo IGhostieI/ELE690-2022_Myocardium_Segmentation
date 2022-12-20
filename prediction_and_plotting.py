@@ -138,13 +138,13 @@ def main():
     
     ])
 
-    test_images = resize_and_rescale(image)
-    test_Mmyo = resize_and_rescale(image)
+    processed_image = resize_and_rescale(image)
+    processed_Mmyo = resize_and_rescale(image)
 
     model = create_unet_model(input_shape)
     model.load_weights("h5_files\val_accuracy.h5")
 
-    _, Mmyo = predict_myocardium(unet_model=model, image=image)
-    plot_myocardium_mask(predicted_Mmyo=Mmyo, image=image)
+    _, Mmyo = predict_myocardium(unet_model=model, image=processed_image)
+    plot_myocardium_mask(predicted_Mmyo=Mmyo, image=processed_image)
 if __name__=="__main__":
     main()
